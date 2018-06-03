@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <style>
+    .margin-top-3 {
+      margin-top: 3em;
+    }
+    /*.drag{
+      margin-top: 500px;
+    }*/
+    .giver > td{
+      cursor: pointer;
+    }
+    .giver:hover{
+      color: violet;
+    }
+    #generate, #transact{
+      display: none;
+    }
+    #ad > iframe{
+      visibility: hidden;
+    }
+    .btn{
+        background-color: black;
+        background-image: none;
+        border: black;
+    }
+    #logo{
+      position: relative;
+      -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    }
+
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes example {
+        0%   { left:0px; }
+        /*25%  { left:200px;}
+        50%  { left:200px;}
+        75%  { left:0px;}*/
+        100% { left:400px; }
+    }
+
+    /* Standard syntax */
+    @keyframes example {
+        0%   { left:0px; }
+        /*25%  { left:200px;}
+        50%  { left:200px;}
+        75%  { left:0px;}*/
+        100% { left:400px; }
+    }
+  </style>
+</head>
+<body class="container">
+  <img src="https://www.errortechologies.com/img/smartpool.png" id="logo" width="300" height="200">
+  <center><h1>smart pool </h1></center>
+  <br>
+  <button class="btn btn-primary" id="watch">watch Ad</button><br><br>
+  <div class="row">
+    <div class="col-sm-8" id="ad">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/TyHB4Z59zLE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-sm-4">
+      <h2>Wallet</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <td>Tokens For Sale</td>
+            <td id="tokens-total2"></td>
+          </tr>
+          <tr>
+            <td>Tokens Purchase</td>
+            <td id="tokens-purchase"></td>
+          </tr>
+          <tr>
+            <td>Buyer Address</td>
+            <td id="tokens-add"></td>
+          </tr>
+          <!-- <tr>
+            <td>Balance in the contract</td>
+            <td id="contract-balance"></td>
+          </tr> -->
+        </table>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-default" id="generate">generate Token</button>
+  <div class="row margin-top-3">
+        <h2>Generate Tokens</h2>
+        <div class="col-sm-12">
+          <div id="buy-msg"></div>
+          <input type="Number" id="buy" class="col-sm-8" min=0 placeholder="Number of tokens required"/>&nbsp;
+          <a href="#" onclick="buyTokens()" class="btn btn-primary">Request</a>
+        </div>
+  <div class="drag">
+    <div class="col-sm-7 margin-top-3">
+      <h2>Ride givers</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>from</th>
+              <th>to</th>
+              <th>time</th>
+            </tr>
+            <tr class="giver">
+              <td>Rama</td>
+              <td>Jntu main gate</td>
+              <td>Hitech city</td>
+              <td>09:15 AM</td>
+            </tr>
+            <tr class="giver">
+              <td>Nick</td>
+              <td>Ecil X roads</td>
+              <td>Mehdipatnam</td>
+              <td>10:30 AM</td>
+            </tr>
+            <tr class="giver"> 
+              <td>Jose</td>
+              <td>Lingampally</td>
+              <td>BHEL</td>
+              <td>08:45 AM</td>
+            </tr>
+          </thead>
+          
+        </table>
+      </div><br>
+      <hr>
+      <div class="container-fluid" id="transact">
+        <div class="row">
+          <div class="col-6">
+            <h2>Transact tokens to giver</h2>
+            <div id="msg"></div>
+            <input type="text" id="candidate" placeholder="Enter the giver name"/>
+            <br>
+            <br>
+            <input type="Number" id="vote-tokens" min=0 placeholder="no. of tokens"/>
+            <br>
+            <br>
+            <a href="#" onclick="voteForCandidate()" class="btn btn-primary">continue</a>
+        </div>
+        <br>
+        <div class="col-6 table-responsive">
+          <h2>Giver-Wallet</h2>
+          <table class="table table-bordered">
+            <tbody id="candidate-rows">
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+        
+        <p id="accountAddress"></p><br><hr>
+        
+    </div>
+    
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#watch").click(function(){
+        $("#ad > iframe").css("visibility", "visible");
+        $("#generate").fadeIn(4000);
+      });
+      $(".giver").click(function(){
+          $("#candidate").val($(this).children("td:first").html());
+          $("#transact").fadeIn(3000);
+      });
+  });
+</script>
+<script src="app.js"></script>
+</html>
